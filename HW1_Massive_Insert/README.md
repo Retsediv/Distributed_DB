@@ -33,6 +33,6 @@ Execution time: 77.62678718566895
 Counter value: 100000
 
 [OPTIMISTIC CONCURRENCY CONTROL]
-Execution time: veeeeeery long
+Execution time: 442.7871069908142
 Counter value: 100000
 ```
