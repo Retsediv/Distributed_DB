@@ -8,7 +8,6 @@ docker compose up
 
 2. Check out Management Center to see if everything works (go to localhost:8080 and enable dev mode).
 
-
 ## Results
 
 ```
@@ -26,6 +25,12 @@ final counter value: 100000
 Execution time: 1105.5332098007202
 final counter value: 100000
 === FINISHED ===
+
+[PART 4 | Atomic]
+final counter value: 100000
+Execution time: 30.487966060638428
+=== FINISHED ===
+
 
 
 ```
