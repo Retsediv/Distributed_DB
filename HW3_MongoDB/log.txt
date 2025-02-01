@@ -1,0 +1,706 @@
+===== PART 1
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('679e0b67e81285eac2c191b7'),
+    '1': ObjectId('679e0b67e81285eac2c191b8'),
+    '2': ObjectId('679e0b67e81285eac2c191b9'),
+    '3': ObjectId('679e0b67e81285eac2c191ba'),
+    '4': ObjectId('679e0b67e81285eac2c191bb')
+  }
+}
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b7'),
+    category: 'Phone',
+    model: 'iPhone 6',
+    producer: 'Apple',
+    price: 600
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b8'),
+    category: 'Phone',
+    model: 'Galaxy S8',
+    producer: 'Samsung',
+    price: 500
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b9'),
+    category: 'TV',
+    model: 'Bravia X900',
+    producer: 'Sony',
+    price: 1200,
+    screenSize: 55,
+    smartTV: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191ba'),
+    category: 'Smart Watch',
+    model: 'Apple Watch Series 3',
+    producer: 'Apple',
+    price: 300,
+    waterResistant: true,
+    GPS: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191bb'),
+    category: 'Laptop',
+    model: 'XPS 13',
+    producer: 'Dell',
+    price: 1000,
+    RAM: '8GB',
+    storage: '256GB'
+  }
+]
+2
+4
+[ 'Apple', 'Dell', 'Samsung', 'Sony' ]
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b7'),
+    category: 'Phone',
+    model: 'iPhone 6',
+    producer: 'Apple',
+    price: 600
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b8'),
+    category: 'Phone',
+    model: 'Galaxy S8',
+    producer: 'Samsung',
+    price: 500
+  }
+]
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b7'),
+    category: 'Phone',
+    model: 'iPhone 6',
+    producer: 'Apple',
+    price: 600
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b8'),
+    category: 'Phone',
+    model: 'Galaxy S8',
+    producer: 'Samsung',
+    price: 500
+  }
+]
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b8'),
+    category: 'Phone',
+    model: 'Galaxy S8',
+    producer: 'Samsung',
+    price: 500
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b9'),
+    category: 'TV',
+    model: 'Bravia X900',
+    producer: 'Sony',
+    price: 1200,
+    screenSize: 55,
+    smartTV: true
+  }
+]
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b7'),
+    category: 'Phone',
+    model: 'iPhone 6',
+    producer: 'Apple',
+    price: 550,
+    discounted: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b8'),
+    category: 'Phone',
+    model: 'Galaxy S8',
+    producer: 'Samsung',
+    price: 450,
+    discounted: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b9'),
+    category: 'TV',
+    model: 'Bravia X900',
+    producer: 'Sony',
+    price: 1200,
+    screenSize: 55,
+    smartTV: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191ba'),
+    category: 'Smart Watch',
+    model: 'Apple Watch Series 3',
+    producer: 'Apple',
+    price: 300,
+    waterResistant: true,
+    GPS: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191bb'),
+    category: 'Laptop',
+    model: 'XPS 13',
+    producer: 'Dell',
+    price: 1000,
+    RAM: '8GB',
+    storage: '256GB'
+  }
+]
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b9'),
+    category: 'TV',
+    model: 'Bravia X900',
+    producer: 'Sony',
+    price: 1200,
+    screenSize: 55,
+    smartTV: true
+  }
+]
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b7'),
+    category: 'Phone',
+    model: 'iPhone 6',
+    producer: 'Apple',
+    price: 550,
+    discounted: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b8'),
+    category: 'Phone',
+    model: 'Galaxy S8',
+    producer: 'Samsung',
+    price: 450,
+    discounted: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b9'),
+    category: 'TV',
+    model: 'Bravia X900',
+    producer: 'Sony',
+    price: 1300,
+    screenSize: 55,
+    smartTV: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191ba'),
+    category: 'Smart Watch',
+    model: 'Apple Watch Series 3',
+    producer: 'Apple',
+    price: 300,
+    waterResistant: true,
+    GPS: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191bb'),
+    category: 'Laptop',
+    model: 'XPS 13',
+    producer: 'Dell',
+    price: 1000,
+    RAM: '8GB',
+    storage: '256GB'
+  }
+]
+
+===== PART 2
+
+{ acknowledged: true, deletedCount: 0 }
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('679e0bf7e81285eac2c191bc'),
+    '1': ObjectId('679e0bf7e81285eac2c191bd'),
+    '2': ObjectId('679e0bf7e81285eac2c191be')
+  }
+}
+[
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b7'),
+    category: 'Phone',
+    model: 'iPhone 6',
+    producer: 'Apple',
+    price: 550,
+    discounted: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b8'),
+    category: 'Phone',
+    model: 'Galaxy S8',
+    producer: 'Samsung',
+    price: 450,
+    discounted: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191b9'),
+    category: 'TV',
+    model: 'Bravia X900',
+    producer: 'Sony',
+    price: 1300,
+    screenSize: 55,
+    smartTV: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191ba'),
+    category: 'Smart Watch',
+    model: 'Apple Watch Series 3',
+    producer: 'Apple',
+    price: 300,
+    waterResistant: true,
+    GPS: true
+  },
+  {
+    _id: ObjectId('679e0b67e81285eac2c191bb'),
+    category: 'Laptop',
+    model: 'XPS 13',
+    producer: 'Dell',
+    price: 1000,
+    RAM: '8GB',
+    storage: '256GB'
+  }
+]
+[
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bc'),
+    order_number: 1001,
+    date: ISODate('2023-01-15T00:00:00.000Z'),
+    total_sum: 500,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b8')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bd'),
+    order_number: 1002,
+    date: ISODate('2023-02-20T00:00:00.000Z'),
+    total_sum: 750,
+    customer: {
+      name: 'Oksana',
+      surname: 'Kh',
+      phones: [ 1111111 ],
+      address: 'Kyiv, UA'
+    },
+    payment: { card_owner: 'Oksana Kh', cardId: 87654321 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b9')
+    ]
+  }
+]
+[
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bc'),
+    order_number: 1001,
+    date: ISODate('2023-01-15T00:00:00.000Z'),
+    total_sum: 500,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b8')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191be'),
+    order_number: 1003,
+    date: ISODate('2023-03-05T00:00:00.000Z'),
+    total_sum: 300,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [ ObjectId('679e0b67e81285eac2c191ba') ]
+  }
+]
+[
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bc'),
+    order_number: 1001,
+    date: ISODate('2023-01-15T00:00:00.000Z'),
+    total_sum: 500,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b8')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bd'),
+    order_number: 1002,
+    date: ISODate('2023-02-20T00:00:00.000Z'),
+    total_sum: 750,
+    customer: {
+      name: 'Oksana',
+      surname: 'Kh',
+      phones: [ 1111111 ],
+      address: 'Kyiv, UA'
+    },
+    payment: { card_owner: 'Oksana Kh', cardId: 87654321 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b9')
+    ]
+  }
+]
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+[
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bc'),
+    order_number: 1001,
+    date: ISODate('2023-01-15T00:00:00.000Z'),
+    total_sum: 600,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b8'),
+      ObjectId('679e0b67e81285eac2c191bb')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bd'),
+    order_number: 1002,
+    date: ISODate('2023-02-20T00:00:00.000Z'),
+    total_sum: 850,
+    customer: {
+      name: 'Oksana',
+      surname: 'Kh',
+      phones: [ 1111111 ],
+      address: 'Kyiv, UA'
+    },
+    payment: { card_owner: 'Oksana Kh', cardId: 87654321 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b9'),
+      ObjectId('679e0b67e81285eac2c191bb')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191be'),
+    order_number: 1003,
+    date: ISODate('2023-03-05T00:00:00.000Z'),
+    total_sum: 300,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [ ObjectId('679e0b67e81285eac2c191ba') ]
+  }
+]
+[ { order_number: 1001, items_count: 3 } ]
+[
+  {
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { cardId: 12345678 }
+  },
+  {
+    customer: {
+      name: 'Oksana',
+      surname: 'Kh',
+      phones: [ 1111111 ],
+      address: 'Kyiv, UA'
+    },
+    payment: { cardId: 87654321 }
+  }
+]
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+[
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bc'),
+    order_number: 1001,
+    date: ISODate('2023-01-15T00:00:00.000Z'),
+    total_sum: 600,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b8'),
+      ObjectId('679e0b67e81285eac2c191bb')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bd'),
+    order_number: 1002,
+    date: ISODate('2023-02-20T00:00:00.000Z'),
+    total_sum: 850,
+    customer: {
+      name: 'Oksana',
+      surname: 'Kh',
+      phones: [ 1111111 ],
+      address: 'Kyiv, UA'
+    },
+    payment: { card_owner: 'Oksana Kh', cardId: 87654321 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191bb')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191be'),
+    order_number: 1003,
+    date: ISODate('2023-03-05T00:00:00.000Z'),
+    total_sum: 300,
+    customer: {
+      name: 'Andrii',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [ ObjectId('679e0b67e81285eac2c191ba') ]
+  }
+]
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+[
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bc'),
+    order_number: 1001,
+    date: ISODate('2023-01-15T00:00:00.000Z'),
+    total_sum: 600,
+    customer: {
+      name: 'John',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191b8'),
+      ObjectId('679e0b67e81285eac2c191bb')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191bd'),
+    order_number: 1002,
+    date: ISODate('2023-02-20T00:00:00.000Z'),
+    total_sum: 850,
+    customer: {
+      name: 'Oksana',
+      surname: 'Kh',
+      phones: [ 1111111 ],
+      address: 'Kyiv, UA'
+    },
+    payment: { card_owner: 'Oksana Kh', cardId: 87654321 },
+    items_id: [
+      ObjectId('679e0b67e81285eac2c191b7'),
+      ObjectId('679e0b67e81285eac2c191bb')
+    ]
+  },
+  {
+    _id: ObjectId('679e0bf7e81285eac2c191be'),
+    order_number: 1003,
+    date: ISODate('2023-03-05T00:00:00.000Z'),
+    total_sum: 300,
+    customer: {
+      name: 'John',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    payment: { card_owner: 'Andrii Zhuravchak', cardId: 12345678 },
+    items_id: [ ObjectId('679e0b67e81285eac2c191ba') ]
+  }
+]
+[
+  {
+    customer: {
+      name: 'John',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    items: [
+      { name: 'Phone', price: 550 },
+      { name: 'Phone', price: 450 },
+      { name: 'Laptop', price: 1000 }
+    ]
+  },
+  {
+    customer: {
+      name: 'John',
+      surname: 'Zhuravchak',
+      phones: [ 9876543, 1234567 ],
+      address: 'Lviv, UA'
+    },
+    items: [ { name: 'Smart Watch', price: 300 } ]
+  }
+]
+
+==== PART 3
+
+
+{
+    "ok" : 1.0
+}
+
+{
+    "acknowledged" : true,
+    "insertedIds" : {
+        "0" : ObjectId("679e0c72e81285eac2c191bf"),
+        "1" : ObjectId("679e0c72e81285eac2c191c0"),
+        "2" : ObjectId("679e0c72e81285eac2c191c1"),
+        "3" : ObjectId("679e0c72e81285eac2c191c2"),
+        "4" : ObjectId("679e0c72e81285eac2c191c3")
+    }
+}
+
+
+[
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191bf"),
+        "customerName" : "Ivan",
+        "rating" : 4.0,
+        "review" : "Good shop! Fast delivery.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c0"),
+        "customerName" : "Oksana",
+        "rating" : 5.0,
+        "review" : "Excellent service.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c1"),
+        "customerName" : "Petro",
+        "rating" : 3.0,
+        "review" : "Average experience.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c2"),
+        "customerName" : "Anna",
+        "rating" : 4.0,
+        "review" : "Nice website and friendly staff.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c3"),
+        "customerName" : "Dmytro",
+        "rating" : 2.0,
+        "review" : "Not satisfied with the support.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    }
+]
+
+{
+    "acknowledged" : true,
+    "insertedId" : ObjectId("679e0c9be81285eac2c191c4")
+}
+
+[
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c0"),
+        "customerName" : "Oksana",
+        "rating" : 5.0,
+        "review" : "Excellent service.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c1"),
+        "customerName" : "Petro",
+        "rating" : 3.0,
+        "review" : "Average experience.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c2"),
+        "customerName" : "Anna",
+        "rating" : 4.0,
+        "review" : "Nice website and friendly staff.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c72e81285eac2c191c3"),
+        "customerName" : "Dmytro",
+        "rating" : 2.0,
+        "review" : "Not satisfied with the support.",
+        "date" : ISODate("2025-02-01T11:58:42.409+0000")
+    },
+    {
+        "_id" : ObjectId("679e0c9be81285eac2c191c4"),
+        "customerName" : "Svitlana",
+        "rating" : 5.0,
+        "review" : "Amazing! Will buy again.",
+        "date" : ISODate("2025-02-01T11:59:23.391+0000")
+    }
+]
+
