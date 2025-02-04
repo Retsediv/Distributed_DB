@@ -1,0 +1,248 @@
+Added 3 labels, created 3 nodes, set 9 properties, completed after 22 ms.
+Added 2 labels, created 2 nodes, set 4 properties, completed after 6 ms.
+Added 3 labels, created 3 nodes, set 6 properties, completed after 8 ms.
+
+Created 1 relationship, completed after 15 ms.
+Created 1 relationship, completed after 8 ms.
+Created 1 relationship, completed after 7 ms.
+
+Created 1 relationship, completed after 14 ms.
+Created 1 relationship, completed after 6 ms.
+Created 1 relationship, completed after 5 ms.
+Created 1 relationship, completed after 7 ms.
+Created 1 relationship, completed after 6 ms.
+
+Created 1 relationship, completed after 13 ms.
+Created 1 relationship, completed after 6 ms.
+
+// 1
+[
+  {
+    "i": {
+      "identity": 1,
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "price": 500,
+        "name": "Smartphone",
+        "id": 2
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:1"
+    }
+  }
+]
+
+// 2
+[
+  {
+    "orderTotal": 1500
+  }
+]
+
+// 3
+[
+  {
+    "o": {
+      "identity": 5,
+      "labels": [
+        "Order"
+      ],
+      "properties": {
+        "date": "2024-01-15",
+        "id": 1
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:5"
+    }
+  },
+  {
+    "o": {
+      "identity": 6,
+      "labels": [
+        "Order"
+      ],
+      "properties": {
+        "date": "2024-01-20",
+        "id": 2
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:6"
+    }
+  }
+]
+
+// 4
+[
+  {
+    "i": {
+      "identity": 2,
+      "labels": [
+        "Item"
+],
+      "properties": {
+        "price": 200,
+        "name": "Headphones",
+        "id": 3
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:2"
+    }
+  },
+  {
+    "i": {
+      "identity": 0,
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "price": 1000,
+        "name": "Laptop",
+        "id": 1
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:0"
+    }
+  },
+  {
+    "i": {
+      "identity": 1,
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "price": 500,
+        "name": "Smartphone",
+        "id": 2
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:1"
+    }
+  }
+]
+
+// 5
+[
+  {
+    "totalItems": 3
+  }
+]
+
+// 6
+[
+  {
+    "totalSpent": 1700
+  }
+]
+
+// 7
+[
+  {
+    "i.id": 1,
+    "i.name": "Laptop",
+    "purchaseCount": 2
+  },
+  {
+    "i.id": 2,
+    "i.name": "Smartphone",
+    "purchaseCount": 2
+  },
+  {
+    "i.id": 3,
+    "i.name": "Headphones",
+    "purchaseCount": 1
+  }
+]
+
+// 8
+[
+  {
+    "i": {
+      "identity": 2,
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "price": 200,
+        "name": "Headphones",
+        "id": 3
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:2"
+    }
+  }
+]
+
+// 9
+[
+  {
+    "other": {
+      "identity": 1,
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "price": 500,
+        "name": "Smartphone",
+        "id": 2
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:1"
+    }
+  },
+  {
+    "other": {
+      "identity": 2,
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "price": 200,
+        "name": "Headphones",
+        "id": 3
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:2"
+    }
+  }
+]
+
+// 10
+[
+  {
+    "c": {
+      "identity": 3,
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "name": "Alice",
+        "id": 1
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:3"
+    }
+  },
+  {
+    "c": {
+      "identity": 4,
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "name": "Bob",
+        "id": 2
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:4"
+    }
+  }
+]
+
+// 11
+[
+  {
+    "i": {
+      "identity": 2,
+      "labels": [
+        "Item"
+      ],
+      "properties": {
+        "price": 200,
+        "name": "Headphones",
+        "id": 3
+      },
+      "elementId": "4:807667bf-f0f1-41f2-b4ba-8b508430d179:2"
+    }
+  }
+]
