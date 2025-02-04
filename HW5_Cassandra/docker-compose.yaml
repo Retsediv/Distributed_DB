@@ -1,0 +1,14 @@
+services:
+  cassandra-service:
+    image: cassandra:5.0
+    ports:
+      - "9042:9042"
+    volumes:
+      # This configuration is customized to enable materialized views.
+      - ./cassandra.yaml:/etc/cassandra/cassandra.yaml
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+

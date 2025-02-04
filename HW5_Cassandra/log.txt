@@ -1,0 +1,218 @@
+// 1.
+cqlsh:shop> DESCRIBE TABLE items;
+
+CREATE TABLE shop.items (
+    category text,
+    price decimal,
+    id uuid,
+    manufacturer text,
+    name text,
+    properties map<text, text>,
+    PRIMARY KEY (category, price, id)
+) WITH CLUSTERING ORDER BY (price ASC, id ASC)
+    AND additional_write_policy = '99p'
+    AND allow_auto_snapshot = true
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 864000
+    AND incremental_backups = true
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX idx_properties ON shop.items (values(properties));
+
+// 2.
+cqlsh:shop> SELECT * FROM items where category = 'electronics' ORDER BY price;
+
+ category    | price  | id                                   | manufacturer | name                | properties
+-------------+--------+--------------------------------------+--------------+---------------------+-----------------------------------------------------------------------------
+ electronics | 149.99 | 0ffa2b79-54bb-49c7-9735-86a664dd5ef3 |  SoundMaster | Wireless Headphones |      {'battery_life': '20h', 'color': 'white', 'connectivity': 'Bluetooth'}
+ electronics | 299.99 | e5478b1e-1413-4545-a569-044063f77108 |       BrandY |        Smartphone X |                 {'battery': '3000mAh', 'color': 'black', 'memory': '128GB'}
+ electronics | 999.99 | ab9dd5a9-5601-4b74-b5b8-d610a21627f3 |       BrandZ |          Laptop Pro | {'RAM': '16GB', 'processor': 'i7', 'screen': '15 inch', 'storage': '512GB'}
+
+
+// 3.a
+Warnings :
+Materialized views are experimental and are not recommended for production use.
+
+
+ category    | name         | price  | id                                   | manufacturer | properties
+-------------+--------------+--------+--------------------------------------+--------------+-------------------------------------------------------------
+ electronics | Smartphone X | 299.99 | 295deb6e-b7e0-4204-898b-101c95520f27 |       BrandY | {'battery': '3000mAh', 'color': 'black', 'memory': '128GB'}
+
+// 3.b
+Warnings :
+Materialized views are experimental and are not recommended for production use.
+
+ category    | price  | id                                   | manufacturer | name                | properties
+-------------+--------+--------------------------------------+--------------+---------------------+-----------------------------------------------------------------------------
+ electronics | 149.99 | 69279da1-4824-4074-a04c-ac0be406711b |  SoundMaster | Wireless Headphones |      {'battery_life': '20h', 'color': 'white', 'connectivity': 'Bluetooth'}
+ electronics | 299.99 | 295deb6e-b7e0-4204-898b-101c95520f27 |       BrandY |        Smartphone X |                 {'battery': '3000mAh', 'color': 'black', 'memory': '128GB'}
+ electronics | 999.99 | 78a6f224-4240-4772-aaaf-b2fe4796a484 |       BrandZ |          Laptop Pro | {'RAM': '16GB', 'processor': 'i7', 'screen': '15 inch', 'storage': '512GB'}
+
+
+// 3.c
+
+category    | manufacturer | price  | id                                   | name         | properties
+-------------+--------------+--------+--------------------------------------+--------------+-------------------------------------------------------------
+ electronics |       BrandY | 299.99 | 295deb6e-b7e0-4204-898b-101c95520f27 | Smartphone X | {'battery': '3000mAh', 'color': 'black', 'memory': '128GB'}
+
+ // 4.a
+
+  category    | price  | id                                   | manufacturer | name                | properties
+-------------+--------+--------------------------------------+--------------+---------------------+------------------------------------------------------------------------
+ electronics | 149.99 | 69279da1-4824-4074-a04c-ac0be406711b |  SoundMaster | Wireless Headphones | {'battery_life': '20h', 'color': 'white', 'connectivity': 'Bluetooth'}
+ electronics | 299.99 | 295deb6e-b7e0-4204-898b-101c95520f27 |       BrandY |        Smartphone X |            {'battery': '3000mAh', 'color': 'black', 'memory': '128GB'}
+    clothing |  49.99 | 2c78c130-d64e-4f7d-ab24-54485a204417 |    FashionCo |             T-shirt |                   {'color': 'blue', 'material': 'cotton', 'size': 'M'}
+
+// 4.b
+
+
+// 5.a
+OK
+
+// 5.b
+OK
+
+// 5.c
+OK
+
+// 5.d
+
+electronics | 149.99 | 69279da1-4824-4074-a04c-ac0be406711b |  SoundMaster | Wireless Headphones | {'battery_life': '20h', 'color': 'blue', 'connectivity': 'Bluetooth', 'warranty': '2 years'}
+ electronics | 299.99 | 295deb6e-b7e0-4204-898b-101c95520f27 |       BrandY |        Smartphone X |                                  {'battery': '3000mAh', 'color': 'black', 'memory': '128GB'}
+ electronics | 999.99 | 78a6f224-4240-4772-aaaf-b2fe4796a484 |       BrandZ |          Laptop Pro |                  {'RAM': '16GB', 'processor': 'i7', 'screen': '15 inch', 'storage': '512GB'}
+    clothing |  49.99 | 2c78c130-d64e-4f7d-ab24-54485a204417 |    FashionCo |             T-shirt |                                         {'color': 'blue', 'material': 'cotton', 'size': 'M'}
+
+----------------------
+----------------------
+----------------------
+
+// 1
+CREATE TABLE shop.orders (
+    customer_name text,
+    order_date timestamp,
+    order_id uuid,
+    order_cost decimal,
+    product_ids list<uuid>,
+    PRIMARY KEY (customer_name, order_date, order_id)
+) WITH CLUSTERING ORDER BY (order_date DESC, order_id ASC)
+    AND additional_write_policy = '99p'
+    AND allow_auto_snapshot = true
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 864000
+    AND incremental_backups = true
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+// 2
+ customer_name | order_date                      | order_id                             | order_cost | product_ids
+---------------+---------------------------------+--------------------------------------+------------+------------------------------------------------------------------------------
+      John Doe | 2023-10-01 12:00:00.000000+0000 | fcc19611-1857-49b8-a51c-3a90fa28f7de |     399.98 | [69279da1-4824-4074-a04c-ac0be406711b, 295deb6e-b7e0-4204-898b-101c95520f27]
+      John Doe | 2023-10-02 14:30:00.000000+0000 | 35abe997-f184-4c0d-a351-c1841e77a760 |     999.99 |                                       [78a6f224-4240-4772-aaaf-b2fe4796a484]
+
+// 3
+customer_name | order_date                      | order_id                             | order_cost | product_ids
+---------------+---------------------------------+--------------------------------------+------------+------------------------------------------------------------------------------
+      John Doe | 2023-10-01 12:00:00.000000+0000 | fcc19611-1857-49b8-a51c-3a90fa28f7de |     399.98 | [69279da1-4824-4074-a04c-ac0be406711b, 295deb6e-b7e0-4204-898b-101c95520f27]
+
+// 4
+count
+-------
+     2
+
+// 5
+
+// 6
+customer_name | order_cost | order_date                      | order_id                             | product_ids
+---------------+------------+---------------------------------+--------------------------------------+----------------------------------------
+      John Doe |     999.99 | 2023-10-02 14:30:00.000000+0000 | 35abe997-f184-4c0d-a351-c1841e77a760 | [78a6f224-4240-4772-aaaf-b2fe4796a484]
+
+// 7
+
+cqlsh:shop> UPDATE orders
+        ...     SET product_ids = product_ids + [78a6f224-4240-4772-aaaf-b2fe4796a484], order_cost = 1500.00
+        ... WHERE customer_name = 'John Doe'
+        ...   AND order_date = '2023-10-01 12:00:00'
+        ...   AND order_id = fcc19611-1857-49b8-a51c-3a90fa28f7de;
+cqlsh:shop> SELECT * FROM orders;
+
+ customer_name | order_date                      | order_id                             | order_cost | product_ids
+---------------+---------------------------------+--------------------------------------+------------+--------------------------------------------------------------------------------------------------------------------
+    Jane Smith | 2023-10-04 16:45:00.000000+0000 | 070d0ff5-0bc4-4163-82dd-b4945be60fc2 |      49.99 |                                                                             [2c78c130-d64e-4f7d-ab24-54485a204417]
+    Jane Smith | 2023-10-03 09:15:00.000000+0000 | e6cb9436-73a6-43ae-ad2e-1e20ae4135ab |    1349.97 | [2c78c130-d64e-4f7d-ab24-54485a204417, 78a6f224-4240-4772-aaaf-b2fe4796a484, 295deb6e-b7e0-4204-898b-101c95520f27]
+      John Doe | 2023-10-02 14:30:00.000000+0000 | 35abe997-f184-4c0d-a351-c1841e77a760 |     999.99 |                                                                             [78a6f224-4240-4772-aaaf-b2fe4796a484]
+      John Doe | 2023-10-01 12:00:00.000000+0000 | fcc19611-1857-49b8-a51c-3a90fa28f7de |    1500.00 | [69279da1-4824-4074-a04c-ac0be406711b, 295deb6e-b7e0-4204-898b-101c95520f27, 78a6f224-4240-4772-aaaf-b2fe4796a484]
+
+// 8
+ order_cost | order_cost_writetime
+------------+----------------------
+     999.99 |     1738698649343804
+    1500.00 |     1738698937145101
+
+// 9
+cqlsh:shop> INSERT INTO orders (customer_name, order_date, order_id, product_ids, order_cost)
+        ... VALUES (
+        ...   'Andrii A', toTimestamp(now()), uuid(),
+        ...   [78a6f224-4240-4772-aaaf-b2fe4796a484],
+        ...   199.99
+        ... ) USING TTL 86400;
+cqlsh:shop> SELECT * FROM orders;
+
+ customer_name | order_date                      | order_id                             | order_cost | product_ids
+---------------+---------------------------------+--------------------------------------+------------+--------------------------------------------------------------------------------------------------------------------
+    Jane Smith | 2023-10-04 16:45:00.000000+0000 | 070d0ff5-0bc4-4163-82dd-b4945be60fc2 |      49.99 |                                                                             [2c78c130-d64e-4f7d-ab24-54485a204417]
+    Jane Smith | 2023-10-03 09:15:00.000000+0000 | e6cb9436-73a6-43ae-ad2e-1e20ae4135ab |    1349.97 | [2c78c130-d64e-4f7d-ab24-54485a204417, 78a6f224-4240-4772-aaaf-b2fe4796a484, 295deb6e-b7e0-4204-898b-101c95520f27]
+      Andrii A | 2025-02-04 19:57:19.812000+0000 | a87e9394-b274-436f-aa0c-ed9ef5c078b8 |     199.99 |                                                                             [78a6f224-4240-4772-aaaf-b2fe4796a484]
+      John Doe | 2023-10-02 14:30:00.000000+0000 | 35abe997-f184-4c0d-a351-c1841e77a760 |     999.99 |                                                                             [78a6f224-4240-4772-aaaf-b2fe4796a484]
+      John Doe | 2023-10-01 12:00:00.000000+0000 | fcc19611-1857-49b8-a51c-3a90fa28f7de |    1500.00 | [69279da1-4824-4074-a04c-ac0be406711b, 295deb6e-b7e0-4204-898b-101c95520f27, 78a6f224-4240-4772-aaaf-b2fe4796a484]
+
+// 10
+[json]
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                                  {"customer_name": "John Doe", "order_date": "2023-10-02 14:30:00.000Z", "order_id": "35abe997-f184-4c0d-a351-c1841e77a760", "order_cost": 999.99, "product_ids": ["78a6f224-4240-4772-aaaf-b2fe4796a484"]}
+ {"customer_name": "John Doe", "order_date": "2023-10-01 12:00:00.000Z", "order_id": "fcc19611-1857-49b8-a51c-3a90fa28f7de", "order_cost": 1500.00, "product_ids": ["69279da1-4824-4074-a04c-ac0be406711b", "295deb6e-b7e0-4204-898b-101c95520f27", "78a6f224-4240-4772-aaaf-b2fe4796a484"]}
+
+ // 11
+
+cqlsh:shop> INSERT INTO orders JSON '{
+        ...   "customer_name": "Bob B",
+        ...   "order_date": "2023-10-01T12:00:00Z",
+        ...   "order_id": "123e4567-e89b-1111-aaaa-426614174001",
+        ...   "product_ids": ["78a6f224-4240-4772-aaaf-b2fe4796a484"],
+        ...   "order_cost": 299.99
+        ... }';
+cqlsh:shop> SELECT JSON * FROM orders
+        ... ;
+
+ [json]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                                   {"customer_name": "Jane Smith", "order_date": "2023-10-04 16:45:00.000Z", "order_id": "070d0ff5-0bc4-4163-82dd-b4945be60fc2", "order_cost": 49.99, "product_ids": ["2c78c130-d64e-4f7d-ab24-54485a204417"]}
+ {"customer_name": "Jane Smith", "order_date": "2023-10-03 09:15:00.000Z", "order_id": "e6cb9436-73a6-43ae-ad2e-1e20ae4135ab", "order_cost": 1349.97, "product_ids": ["2c78c130-d64e-4f7d-ab24-54485a204417", "78a6f224-4240-4772-aaaf-b2fe4796a484", "295deb6e-b7e0-4204-898b-101c95520f27"]}
+                                                                                       {"customer_name": "Bob B", "order_date": "2023-10-01 12:00:00.000Z", "order_id": "123e4567-e89b-1111-aaaa-426614174001", "order_cost": 299.99, "product_ids": ["78a6f224-4240-4772-aaaf-b2fe4796a484"]}
+                                                                                    {"customer_name": "Andrii A", "order_date": "2025-02-04 19:57:19.812Z", "order_id": "a87e9394-b274-436f-aa0c-ed9ef5c078b8", "order_cost": 199.99, "product_ids": ["78a6f224-4240-4772-aaaf-b2fe4796a484"]}
+                                                                                    {"customer_name": "John Doe", "order_date": "2023-10-02 14:30:00.000Z", "order_id": "35abe997-f184-4c0d-a351-c1841e77a760", "order_cost": 999.99, "product_ids": ["78a6f224-4240-4772-aaaf-b2fe4796a484"]}
+   {"customer_name": "John Doe", "order_date": "2023-10-01 12:00:00.000Z", "order_id": "fcc19611-1857-49b8-a51c-3a90fa28f7de", "order_cost": 1500.00, "product_ids": ["69279da1-4824-4074-a04c-ac0be406711b", "295deb6e-b7e0-4204-898b-101c95520f27", "78a6f224-4240-4772-aaaf-b2fe4796a484"]}
